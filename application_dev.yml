@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: clan-5062
+data:
+  env: config-eureka-dev
+  user:
+    username: eureka-client-user
+    password: 1291029102
 ---
 spring:
   application:
