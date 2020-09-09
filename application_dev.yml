@@ -1,0 +1,55 @@
+spring:
+  profiles:
+    active: clan-5062
+---
+spring:
+  application:
+    name: eureka-server  # 服务名称
+  profiles: clan-5062
+
+server:
+  port: 5062  #服务端口
+  servlet:
+    context-path: / # Eureka服务的上下文路径
+
+eureka:
+  instance: localhost
+  client:
+    registerwithEureka: true #注册自己（默认true，用在集群中）
+    fetchRegistry: true   #获取自己的信息（默认true，用在集群中）
+    service-url:
+      defaultZone: http://localhost:5061/eureka, http://localhost:5062/eureka
+---
+spring:
+  application:
+    name: eureka-server  # 服务名称
+  profiles: clan-5061
+
+server:
+  port: 5061  #服务端口
+  servlet:
+    context-path: / # Eureka服务的上下文路径
+
+eureka:
+  instance: localhost
+  client:
+    registerwithEureka: true #注册自己（默认true，用在集群中）
+    fetchRegistry: true   #获取自己的信息（默认true，用在集群中）
+    service-url:
+      defaultZone: http://localhost:5061/eureka, http://localhost:5062/eureka
+---
+spring:
+  application:
+    name: eureka-server  # 服务名称
+  profiles: single-eureka
+
+server:
+  port: 5060  #服务端口
+  servlet:
+    context-path: / # Eureka服务的上下文路径
+
+eureka:
+  client:
+    registerwithEureka: false  #不注册自己（默认true，用在集群中）
+    fetchRegistry: false   #不要获取自己的信息（默认true，用在集群中）
+---
